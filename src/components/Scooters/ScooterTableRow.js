@@ -4,11 +4,16 @@ const ScooterTableRow = ({ scooter }) => {
   return(
     <tr>
       <td>{ scooter.id }</td>
-      <td>{ scooter.scooter }</td>
+      <td>{ scooter.vin }</td>
       <td>{ scooter.model }</td>
-      <td>{ scooter.battery }</td>
-      <td>{ scooter.state }</td>
-      <td>{ scooter.ticket }</td>
+      <td>{ scooter.market_id }</td>
+      <td>{ scooter.energy_level }</td>
+      <td>{ scooter.license_plate }</td>
+      <td>{ scooter.distance_to_travel }</td>
+      <td> { scooter.location.lng } </td>
+      <td> { scooter.location.lat } </td>
     </tr>
   );
 }
+
+export default ScooterTableRow;

@@ -1,30 +1,78 @@
 import React, { Component } from 'react';
 import './App.css';
 import getScooters from '../../api';
-import ScooterView from '../Scooters/ScooterView'; 
+import ScooterTable from '../Scooters/ScooterTable'; 
 
 class App extends Component {
   state = {
-    scooters: []
+    scooters: [],
+    loading: true,
   }
 
   componentDidMount() {
+    this.fetchScooters();
+    setInterval(this.fetchScooters, 1000);
+  }
+
+  fetchScooters = (searchTerm) => {
     getScooters()
       .then((result) => {
-        this.setState({ scooters: result.data.data });
+        this.setState(this.parseScooterData(
+          result.data.data.scooters,
+          searchTerm
+        ));
       })
       .catch(error => console.error("Error occurred", error));
   }
 
+  handleFilter = (event) => {
+    event.preventDefault();
+    this.fetchScooters(event.target[0].value);
+  }
+
+  handleReset = () => {
+    this.fetchScooters();
+  }
+
+  parseScooterData = (scooters, searchTerm) => {
+    let scootersList = [];
+
+    scooters.forEach(data => {
+      scootersList = scootersList.concat(data);
+    });
+
+    if (searchTerm) {
+      scootersList = this.filterScootersByModel(scootersList, searchTerm);
+    }
+
+    return { scooters: scootersList, loading: false };
+  }
+
+  filterScootersByModel = (scooters, term) => {
+    return scooters.filter(scooter => {
+      const regex = new RegExp(term, 'gi');
+      return scooter.model.search(regex) === 0;
+    });
+  }
+
   render() {
-    const scooters = this.state.scooters;
+    if (this.state.loading) {
+      return 'Loading...';
+    }
+
+    const scooter = this.state.scooters;
 
     return (
       <div className="App">
         <header className="App-header">
-          Scooters Search
+          <form ref="form" onSubmit={this.handleFilter} >
+            <input type="text" placeholder="Search by Model" name="searchTerm" className="filter"/>
+            <input type="submit" value="Filter Scooters" onSubmit={this.handleFilter} />
+            <input type="reset" onClick={this.handleReset} value="Clear Filter"/>
+          </form>
         </header>
-        <ScooterView scooters={scooters} />
+        
+        <ScooterTable scooters={scooter} />
       </div>
     );
   }

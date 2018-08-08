@@ -65,7 +65,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <form ref="form" onSubmit={this.handleFilter} >
+          <form onSubmit={this.handleFilter} >
             <input type="text" placeholder="Search by Model" name="searchTerm" className="filter"/>
             <input type="submit" value="Filter Scooters" onSubmit={this.handleFilter} />
             <input type="reset" onClick={this.handleReset} value="Clear Filter"/>

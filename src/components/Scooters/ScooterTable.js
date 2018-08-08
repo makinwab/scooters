@@ -2,7 +2,7 @@ import React from 'react';
 import ScooterTableRow from './ScooterTableRow';
 
 const ScooterTable = ({ scooters }) => (
-  <table id="scooter-table" border={1}>
+  <table className="scooter-table" border={1}>
     <thead>
       <tr>
         <th>ID</th>

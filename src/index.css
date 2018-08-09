@@ -1,5 +1,9 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-size: 0.875em;
+  color: #323436;
+  letter-spacing: 0.2px;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif; /* -apple-system, "Haas Grot Text R Web", Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
+  background-color: #F7F8FA;
 }

@@ -1,0 +1,11 @@
+table {
+  border-collapse: collapse;
+  margin: 0.375em;
+  border: 0;
+}
+
+table tr, table td {
+  border-right: 0;
+  border-left: 0;
+  background-color: #ffffff;
+}

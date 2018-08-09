@@ -10,13 +10,22 @@ describe('<ScooterTableRow />', () => {
       scooter: {
         id: '1234',
         vin: 'ab78',
+        model: 'gorgoi',
+        market_id: 'id',
+        energy_level: '70',
+        license_plate: 'lil',
+        distance_to_travel: '43',
+        location: {
+          lng: '433',
+          lat: '333'
+        }
       }
     }
 
-    const ul = document.createElement('ul');
+    const tbody = document.createElement('tbody');
 
-    ReactDOM.render(<ScooterTableRow {...scooterTableRowProps} />, ul);
-    ReactDOM.unmountComponentAtNode(ul);
+    ReactDOM.render(<ScooterTableRow {...scooterTableRowProps} />, tbody);
+    ReactDOM.unmountComponentAtNode(tbody);
   });
 
   it('display table rows with table data', () => {
@@ -29,7 +38,7 @@ describe('<ScooterTableRow />', () => {
         energy_level: '70',
         license_plate: 'lil',
         distance_to_travel: '43',
-        location:{
+        location: {
           lng: '433',
           lat: '333'
         }
@@ -38,6 +47,6 @@ describe('<ScooterTableRow />', () => {
     const wrapper = shallow(<ScooterTableRow {...scooterTableRowProps} />);
 
     expect(wrapper.find("tr").length).toBe(1);
-    expect(wrapper.find("tr td").length).toBe(9);
+    expect(wrapper.find("tr td").length).toBe(10);
   });
 });

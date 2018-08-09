@@ -14,6 +14,7 @@ describe('<App />', () => {
   it('displays a filter form', () => {
     const wrapper = shallow(<App />);
 
+    console.log(wrapper.find('div'))
     expect(wrapper.find('form').length).toBe(1);
     expect(wrapper.find('form input').length).toBe(3);
   });

@@ -3,6 +3,7 @@ import React from 'react';
 const ScooterTableRow = ({ scooter }) => {
   return(
     <tr>
+      <td><input type="checkbox"/></td>
       <td>{ scooter.id }</td>
       <td>{ scooter.vin }</td>
       <td>{ scooter.model }</td>

@@ -24,7 +24,7 @@ describe('<ScooterTable />', () => {
 
     expect(wrapper.find("table").length).toBe(1);
     expect(wrapper.find("table thead").length).toBe(1);
-    expect(wrapper.find("table thead th").length).toBe(8);
+    expect(wrapper.find("table thead th").length).toBe(9);
     expect(wrapper.find("table tbody").length).toBe(1);
   });
 });

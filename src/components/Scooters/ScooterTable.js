@@ -1,10 +1,12 @@
 import React from 'react';
+import './Scooters.css';
 import ScooterTableRow from './ScooterTableRow';
 
 const ScooterTable = ({ scooters }) => (
   <table className="scooter-table" border={1}>
     <thead>
       <tr>
+        <th><input type="checkbox" /></th>
         <th>ID</th>
         <th>VIN</th>
         <th>MODEL</th>

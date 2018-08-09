@@ -11,7 +11,7 @@ class App extends Component {
 
   componentDidMount() {
     this.fetchScooters();
-    setInterval(this.fetchScooters, 1000);
+    setInterval(this.fetchScooters, 10000);
   }
 
   fetchScooters = (searchTerm) => {
@@ -57,7 +57,19 @@ class App extends Component {
 
   render() {
     if (this.state.loading) {
-      return 'Loading...';
+      return (
+        <div className="App">
+          <header className="App-header">
+            <form onSubmit={this.handleFilter} >
+              <input type="text" placeholder="Search by Model" name="searchTerm" className="filter"/>
+              <input className="button" type="submit" value="Filter Scooters" onSubmit={this.handleFilter} />
+              <input className="button" type="reset" onClick={this.handleReset} value="Clear Filter"/>
+            </form>
+          </header>
+
+          Loading....
+        </div>
+      );
     }
 
     const scooter = this.state.scooters;
@@ -67,8 +79,8 @@ class App extends Component {
         <header className="App-header">
           <form onSubmit={this.handleFilter} >
             <input type="text" placeholder="Search by Model" name="searchTerm" className="filter"/>
-            <input type="submit" value="Filter Scooters" onSubmit={this.handleFilter} />
-            <input type="reset" onClick={this.handleReset} value="Clear Filter"/>
+            <input className="button" type="submit" value="Filter Scooters" onSubmit={this.handleFilter} />
+            <input className="button" type="reset" onClick={this.handleReset} value="Clear Filter"/>
           </form>
         </header>
         

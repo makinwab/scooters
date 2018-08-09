@@ -2,14 +2,8 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
 .App-header {
-  background-color: #222;
-  height: 50px;
+  height: 100px;
   padding: 20px;
   color: white;
 }
@@ -17,7 +11,27 @@
 .filter {
   display: block;
   width: 80%;
-  margin: 0 auto;
+  margin: 0 auto 0.375em auto;
+  padding: 1%;
+  font-size: 1.1875em;
+  font-weight: 300;
+  background-color: #F7F8FA;
+  border-radius: 3px;
+  border: 1px solid #cccccc;
+  outline: none;
+}
+
+.button {
+  background-color: #000000; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  margin-right: 0.5em;
+  outline: 0;
 }
 
 .App-title {

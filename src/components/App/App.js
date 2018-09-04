@@ -9,20 +9,31 @@ class App extends Component {
     loading: true,
   }
 
+  isMountedProp = false;
+
   componentDidMount() {
+    this.isMountedProp = true;
     this.fetchScooters();
     setInterval(this.fetchScooters, 10000);
   }
 
-  fetchScooters = (searchTerm) => {
-    getScooters()
-      .then((result) => {
-        this.setState(this.parseScooterData(
-          result.data.data.scooters,
-          searchTerm
-        ));
-      })
-      .catch(error => console.error("Error occurred", error));
+  componentWillUnmount() {
+    this.isMountedProp = false;
+  }
+
+  fetchScooters = async (searchTerm) => {
+    try {
+      const result = await getScooters();
+
+      this.setState(this.parseScooterData(
+        result.data.data.scooters,
+        searchTerm
+      ));
+    } catch(e) {
+      if (this.isMountedProp) { 
+        console.error("Error Occurred", e);
+      }
+    }
   }
 
   handleFilter = (event) => {

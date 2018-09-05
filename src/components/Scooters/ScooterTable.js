@@ -11,8 +11,8 @@ const ScooterTable = ({ scooters }) => (
         <th>VIN</th>
         <th>MODEL</th>
         <th>MARKET ID</th>
-        <th>LICENSE PLATE</th>
         <th>BATTERY</th>
+        <th>LICENSE PLATE</th>
         <th>DISTANCE TO TRAVEL</th>
         <th colSpan="2">LOCATION (LNG, LAT)</th>
       </tr>

@@ -53,7 +53,7 @@ class App extends Component {
     });
 
     if (searchTerm) {
-      scootersList = this.filterScootersByModel(scootersList, searchTerm);
+      scootersList = this.filterScootersByBattery(scootersList, searchTerm);
     }
 
     return { scooters: scootersList, loading: false };
@@ -66,36 +66,28 @@ class App extends Component {
     });
   }
 
+  filterScootersByBattery = (scooters, term) => {
+    return scooters.filter(scooter => {
+      const regex = new RegExp(term, 'gi');
+      const energy_level = scooter.energy_level + '';
+      return energy_level.search(regex) === 0;
+    });
+  }
+
   render() {
-    if (this.state.loading) {
-      return (
-        <div className="App">
-          <header className="App-header">
-            <form onSubmit={this.handleFilter} >
-              <input type="text" placeholder="Search by Model" name="searchTerm" className="filter"/>
-              <input className="button" type="submit" value="Filter Scooters" onSubmit={this.handleFilter} />
-              <input className="button" type="reset" onClick={this.handleReset} value="Clear Filter"/>
-            </form>
-          </header>
-
-          Loading....
-        </div>
-      );
-    }
-
     const scooter = this.state.scooters;
 
     return (
       <div className="App">
         <header className="App-header">
           <form onSubmit={this.handleFilter} >
-            <input type="text" placeholder="Search by Model" name="searchTerm" className="filter"/>
+            <input type="text" placeholder="Search by Battery" name="searchTerm" className="filter"/>
             <input className="button" type="submit" value="Filter Scooters" onSubmit={this.handleFilter} />
             <input className="button" type="reset" onClick={this.handleReset} value="Clear Filter"/>
           </form>
         </header>
         
-        <ScooterTable scooters={scooter} />
+        {this.state.loading ? 'Loading' : <ScooterTable scooters={scooter} /> }
       </div>
     );
   }

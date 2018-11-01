@@ -13,7 +13,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "test:ci": "--setupTestFrameworkScriptFile ./src/setupEnzyme",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
     "deploy": "yarn run build && aws s3 cp build/ s3://fms-aws --recursive"
   },
   "devDependencies": {

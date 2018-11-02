@@ -16,6 +16,7 @@ deploy:
   secret_access_key: $AWS_SECRET_ACCESS_KEY
   bucket: $S3_BUCKET
   skip_cleanup: true
+  region: eu-west-2
   local-dir: build
   on:
     branch: master

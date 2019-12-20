@@ -17,7 +17,7 @@
     "deploy": "yarn run build && aws s3 cp build/ s3://fms-aws --recursive"
   },
   "devDependencies": {
-    "enzyme": "^3.3.0",
+    "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.2.0"
   }
 }
